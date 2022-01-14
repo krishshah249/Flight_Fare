@@ -3,10 +3,10 @@ from flask_cors import cross_origin
 import sklearn
 import pickle
 import pandas as pd
+import urllib.request
 
 app = Flask(__name__)
 model = pickle.load(open("flight_rf.pkl", "rb"))
-
 
 
 @app.route("/")
