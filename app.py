@@ -9,7 +9,7 @@ app = Flask(__name__)
 model = pickle.load(open("flight_rf.pkl", "rb"))
 
 
-@app.route("https://krish-flight-fare-prediction.herokuapp.com")
+@app.route("https://krish-flight-fare-prediction.herokuapp.com/")
 @cross_origin()
 def home():
     return render_template("home.html")
@@ -170,4 +170,4 @@ def predict():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
