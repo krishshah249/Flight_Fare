@@ -4,12 +4,13 @@ import sklearn
 import pickle
 import pandas as pd
 import urllib.request
+import os
 
 app = Flask(__name__)
 model = pickle.load(open("flight_rf.pkl", "rb"))
 
 
-@app.route("https://krish-flight-fare-prediction.herokuapp.com/")
+@app.route("/")
 @cross_origin()
 def home():
     return render_template("home.html")
@@ -170,4 +171,5 @@ def predict():
 
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
